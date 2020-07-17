@@ -12,6 +12,7 @@
 '''
 
 import os
+import json
 
 from datetime               import datetime, timedelta, date
 from flask                  import Flask, jsonify, render_template
@@ -58,6 +59,7 @@ class Business(db.Entity):
   category = Optional(str)
   location = Optional(str)
   tags = Optional(str)
+  description = Optional(str)
   # picture   = Optional(buffer, lazy=True)
 
 db.bind('sqlite', 'example.sqlite', create_db=True)
@@ -73,16 +75,35 @@ db.generate_mapping(create_tables=True)
 @db_session
 def populate_database():
   if select(s for s in Business).count() > 0: return
-  b1 = Business(
-    business_name="JELANI BEAUTY SUPPLY STORE", 
-    address="4425 SKIDAWAY ROAD, SAVANNAH, GEORGIA 31405",
-    phone="912-777-4978", 
-    email="JELANIBEAUTYSUPPLY@GMAIL.COM",
-    website="WWW.JELANIBEAUTYSUPPLY.COM",
-    category="Baby Essentials, Beauty, Beauty Supply Store, Cosmetics, Footwear, Grooming Products, Hair Care Products, Jewelry & Accessories, Personal Care, Skin Care Products",
-    location="Georgia, Savannah",
-    tags="Beauty Supply Store, BLACKOWNEDBEAUTYSUPPLY, cosmetics, georgia, HAIR STORE, MINORITYOWNED, savannah, SAVANNAH STATE, WOMENOWNED"
-  )
+  # b1 = Business(
+  #   business_name="JELANI BEAUTY SUPPLY STORE", 
+  #   address="4425 SKIDAWAY ROAD, SAVANNAH, GEORGIA 31405",
+  #   phone="912-777-4978", 
+  #   email="JELANIBEAUTYSUPPLY@GMAIL.COM",
+  #   website="WWW.JELANIBEAUTYSUPPLY.COM",
+  #   category="Baby Essentials, Beauty, Beauty Supply Store, Cosmetics, Footwear, Grooming Products, Hair Care Products, Jewelry & Accessories, Personal Care, Skin Care Products",
+  #   location="Georgia, Savannah",
+  #   tags="Beauty Supply Store, BLACKOWNEDBEAUTYSUPPLY, cosmetics, georgia, HAIR STORE, MINORITYOWNED, savannah, SAVANNAH STATE, WOMENOWNED"
+  # )
+  data = json.load(open('data.json', 'r'))
+  for obj in data:
+    flag = True
+    for k,v in obj.items():
+      if v == None:
+        flag = False
+        break
+    if flag:
+      print(obj['business_name'])
+      b = Business(
+        business_name=obj['business_name'], 
+        address=obj['Address'],
+        phone=obj['Phone'], 
+        email=obj['Email_ID'],
+        website=obj['Website'],
+        category=obj['Category'],
+        location=obj['Location'],
+        tags=obj['Tags']
+      )
   commit()
 
 @app.route("/database")
