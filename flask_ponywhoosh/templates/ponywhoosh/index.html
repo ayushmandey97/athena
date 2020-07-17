@@ -1,5 +1,5 @@
 {% extends "ponywhoosh/base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
+{# {% import "bootstrap/wtf.html" as wtf %} #}
 {% block styles %}
 {{ super() }}
 <style>
@@ -8,7 +8,23 @@
 	}
 	h1{
 		font-size: 600%;
-		font-family: 'Bree Serif', serif;
+		font-family: 'Raleway', sans-serif;
+	}
+
+	h2{
+		font-size: 300%;
+		font-family: 'Raleway', sans-serif;
+	}
+
+	li{
+		font-size: 150%;
+		font-family: 'Raleway', sans-serif;
+		font-weight: bold;
+	}
+	p{
+		font-size: 150%;
+		font-family: 'Raleway', sans-serif;
+		font-weight: bold;
 	}
 	.btn-avan{
 		width: 100px;
@@ -26,19 +42,33 @@
 		margin-left: 30%;
 	}
 }
+/* Style the video: 100% width and height to cover the entire window */
+#helloooo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
 </style>
+
+
+
 {% endblock %}
-{% block title %}flask-ponywhoosh{% endblock %}
+{% block title %}Athena{% endblock %}
 {% block page_content %}
 <link href='https://fonts.googleapis.com/css?family=Bree+Serif'
 	  rel='stylesheet'
 	  type='text/css'>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+
+
 <div class="page-header" style="margin-top: 70px">
 	<div class="container container-search">
 		<div class="row">
 			<div class="col-md-12 col-xs-12">
 				<h1 class="title-search">
-					Search <small><h4>Welcome To Flask-Ponywhoosh</h4></small>
+					Athena <small><h4>Buying black, made simple</h4></small>
 				</h1>
 			</div>
 		</div>
@@ -80,12 +110,43 @@
 			</div>
 		</div>
 	</div>
-	<div>
-		<a class="btn btn-default btn-avan" href="#avanzado" data-toggle="collapse">
-			more
-		</a>
-	</div>
 </form>
+<h2>Why Athena</h2>
+<ul>
+	<li>Black spending power is set to reach $1.5 Trillion in America by 2021 Yet most of their money goes to white-owned multinational companies.  </li>
+	<li>On average, the black dollar stays within its community for only six hours</li>
+	<li>Black business owners are typically denied loans or are subject to smaller loans compared to other ethnicities</li>
+	<li>Between 1983 and 2016, the median Black family saw their wealth drop by more than half after inflation, compared to a 33% increase for the median White household. Meanwhile, the number of households with $10 million or more skyrocketed by 856%
+</li>
+</ul>
+<br><br>
+<h2>Why buy black</h2>
+<ul>
+	<li>Together we can bring visibility and highlight the businesses that usually receive  less in society.  </li>
+	<li>OWe are conscientious when it comes to organic fruits, sustainable clothes, environmentally friendly packaging, why not pay attention to closing the racial wealth gap?</li>
+</ul>
+
+<br><br>
+
+<h2>The solution</h2>
+<ul>
+	<li>No longer can we hope for a change without doing the work ourselves. 
+</li>
+	<li>Buying black is not a movement, and it’s not just for the black consumer. 
+</li>
+<li>We all have the power to make marginal shifts towards a better world. 
+</li>
+<li>When it comes to buying black, Athena is the answer. 
+</li>
+<li>Black businesses, all over the world, at your fingertips!
+</li>
+</ul>
+
+<br><br>
+
+<h2>About Us</h2>
+<p>We are a collective of people who want to help shift  purchase lifestyles by using accurate data and analytics on how to make buying black easy, for everyone. 
+</p>
 </div>
 
 {% endblock %}
